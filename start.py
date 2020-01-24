@@ -12,7 +12,11 @@ debugi = int(input("Debug(1) or Not(Any number besides 1):"))
 if debugi == 1 : debug = True
 if type == 1 : os.system("cls")
 elif type == 2: os.system("clear")
-TOKEN = input('Access token:')
+TOKENlink = input('Access token link:')
+TOKEN1 = TOKENlink.rsplit('access_token=')
+TOKEN2 = TOKEN1[1]
+TOKEN3 = TOKEN2.rsplit('&expires_in')
+TOKEN = TOKEN3[0]
 time.sleep(1)
 if type == 1 : os.system("cls")
 elif type == 2: os.system("clear")
