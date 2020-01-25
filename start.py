@@ -20,7 +20,7 @@ if type == 1 and os.path.isfile("C:/token.txt") :
 elif type == 2 and os.path.isfile("/../sdcard/android/savetoken/token.txt"): 
   loadtoken = input("Load last token?(y/n): ")
   if loadtoken == 'y' : 
-    tokenfile1 = open("/../sdcard/android/savetoken/token.txt")
+    tokenfile1 = open("token.txt")
     TOKEN = tokenfile1.read()
 else : loadtoken = 'n'
 if loadtoken != 'y' :
@@ -39,7 +39,7 @@ if type == 1 and savetoken == 'y' :
  tokenfile.write(TOKEN)
  tokenfile.close()
 elif type == 2 and savetoken == 'y' :
- tokenfile = open('/../sdcard/android/savetoken/token.txt', 'w')
+ tokenfile = open('token.txt', 'w')
  tokenfile.write(TOKEN)
  tokenfile.close()
  
