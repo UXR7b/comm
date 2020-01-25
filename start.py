@@ -22,7 +22,7 @@ elif type == 2 and os.path.isfile("/../sdcard/android/savetoken/token.txt"):
   if loadtoken == 'y' : 
     tokenfile1 = open("/../sdcard/android/savetoken/token.txt")
     TOKEN = tokenfile1.read()
-    
+else : loadtoken = 'n'
 if loadtoken != 'y' :
  TOKENlink = input('Access token link:')
  TOKEN1 = TOKENlink.rsplit('access_token=')
