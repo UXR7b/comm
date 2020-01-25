@@ -23,7 +23,7 @@ elif type == 2 and os.path.isfile("/../sdcard/android/savetoken/token.txt"):
     tokenfile1 = open("token.txt")
     TOKEN = tokenfile1.read()
 else : loadtoken = 'n'
-if loadtoken != 'y' :
+if loadtoken == 'n' :
  TOKENlink = input('Access token link:')
  TOKEN1 = TOKENlink.rsplit('access_token=')
  TOKEN2 = TOKEN1[1]
@@ -49,6 +49,8 @@ elif type == 2: os.system("clear")
 post_coment = 0
 postID = 0
 link = input(str('Link to post:'))
+print('Post(1) | Photo(2)')
+linktype = input()
 time.sleep(1)
 if type == 1 : os.system("cls")
 elif type == 2: os.system("clear")
@@ -83,8 +85,10 @@ elif type == 2: os.system("clear")
 if typem == 1 : print("Selected:Default")
 elif typem == 2 : print("Selected:Jitter")
 elif typem == 3 : print("Selected:" + str(typem) + " comms in wave")
-
-linksplitany = link.rsplit('wall')[1]
+if linktype == 1 :
+ linksplitany = link.rsplit('wall')[1]
+elif linktype == 2 :
+ linksplitany = link.rsplit('photo')[1]
 linksplit2 = linksplitany.rsplit('_')[0]
 linksplit3 = linksplitany.rsplit('_')[1]
 if debug == True :
