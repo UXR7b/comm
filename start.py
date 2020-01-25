@@ -21,7 +21,7 @@ if type == 1 and os.path.isfile("C:/token.txt") :
 elif type == 2 and os.path.isfile('token'): 
   loadtoken = input("Load last token?(y/n): ")
   if loadtoken == 'y' : 
-    tokenfile1 = open("token")
+    tokenfile1 = open("token.txt")
     TOKEN = tokenfile1.read()
 else : loadtoken = 'n'
 if loadtoken == 'n' :
@@ -58,6 +58,9 @@ mess = input('Comment:')
 time.sleep(1)
 if type == 1 : os.system("cls")
 elif type == 2: os.system("clear")
+fromgroupmess = int(input("Group ID(0 if you want post with your page):"))
+
+
 print("Use Default if you use page access token!")
 typem = int(input('Type:Default(1) , Jitter(2) , Custom(3):'))
 if typem != 1 and typem != 2 and typem !=3 :
@@ -96,6 +99,7 @@ if linktype == 1 :
   print(' ')
   print('list 2 is:' + str(linksplit3))
   print(' ')
+  print('Group ID is:' + str(fromgroupmess))
 elif linktype == 2 :
  linksplitany = link.rsplit('photo')[1]
  linksplit2 = linksplitany.rsplit('_')[0]
@@ -110,8 +114,6 @@ elif linktype == 2 :
   print('list 2 is:' + str(linksplit3))
   print(' ')
   print('list 3 is:' + str(linksplit4))
- 
-
  
 session = vk.Session(access_token=TOKEN)
 api = vk.API(session ,v='5.92', lang='ru')
@@ -141,12 +143,12 @@ rangeclamp = typem + 1
 while counter != 999:
     if linktype == 1 : 
      for n in range(1,rangeclamp) :
-      (api.wall.createComment(owner_id=post_coment,post_id=postID,message=mess))
-      counter += 1
-    elif linktype == 2 :
-     for n in range(1,rangeclamp) :
-       (api.photos.createComment(owner_id=post_coment,photo_id=postID,message=mess))
+       (api.wall.createComment(owner_id=post_coment,post_id=postID,from_group=fromgroupmess,message=mess))
        counter += 1
+    elif linktype == 2 :
+     for n in range(1,rangeclamp) :     
+        (api.photos.createComment(owner_id=post_coment,photo_id=postID,from_group=fromgroupmess,message=mess))
+        counter += 1
     
     if type == 1 : os.system("cls")
     elif type == 2: os.system("clear")
