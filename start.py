@@ -1,5 +1,6 @@
 import vk, time, os , os.path
-
+TOKEN = 0
+savetoken = 'n'
 debug = False
 print("Whats your OS?")
 print("Windows(1) or Linux/Termux(2)")
@@ -49,8 +50,7 @@ elif type == 2: os.system("clear")
 post_coment = 0
 postID = 0
 link = input(str('Link to post:'))
-print('Post(1) | Photo(2)')
-linktype = input()
+linktype = int(input('Post(1) | Photo(2) :' ))
 time.sleep(1)
 if type == 1 : os.system("cls")
 elif type == 2: os.system("clear")
@@ -79,7 +79,6 @@ if typem == 3 :
   elif type == 2 :
    os.system("exit")
  
- 
 if type == 1 : os.system("cls")
 elif type == 2: os.system("clear")
 if typem == 1 : print("Selected:Default")
@@ -87,22 +86,30 @@ elif typem == 2 : print("Selected:Jitter")
 elif typem == 3 : print("Selected:" + str(typem) + " comms in wave")
 if linktype == 1 :
  linksplitany = link.rsplit('wall')[1]
+ linksplit2 = linksplitany.rsplit('_')[0]
+ linksplit3 = linksplitany.rsplit('_')[1]
+ post_coment = linksplit2
+ postID = linksplit3
+ if debug == True :
+  print('list any is:' + linksplitany)
+  print('list 1 is:' + linksplit2)
+  print(' ')
+  print('list 2 is:' + str(linksplit3))
+  print(' ')
 elif linktype == 2 :
  linksplitany = link.rsplit('photo')[1]
-linksplit2 = linksplitany.rsplit('_')[0]
-linksplit3 = linksplitany.rsplit('_')[1]
-if debug == True :
- print('list 1 is:' + linksplit2)
- print(' ')
+ linksplit2 = linksplitany.rsplit('_')[0]
+ linksplit3 = linksplitany.rsplit('_')[1]
+ post_coment = linksplit2
+ postID = linksplit3
+ if debug == True :
+  print('list any is:' + linksplitany)
+  print('list 1 is:' + linksplit2)
+  print(' ')
+  print('list 2 is:' + str(linksplit3))
+  print(' ')
  
-post_coment = linksplit2
 
-
-if debug == True :
- print('list 2 is:' + str(linksplit3))
- print(' ')
- 
-postID = linksplit3
  
 session = vk.Session(access_token=TOKEN)
 api = vk.API(session ,v='5.92', lang='ru')
@@ -138,6 +145,8 @@ while counter != 999:
     elif type == 2: os.system("clear")
     print("       •Comment++•")
     print("Already sent:" + str(counter))
+    print("Message:" + str(mess))
+    print("Mess in wave:" + str(typem))
     print("Powered by Termux-Lab")
     print("by aFro(Ivan Vakushin)")
     
