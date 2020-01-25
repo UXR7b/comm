@@ -3,8 +3,16 @@ TOKEN = 0
 savetoken = 'n'
 debug = False
 print("Whats your OS?")
-print("Windows(1) or Linux/Termux(2)")
-type = int(input())
+type = int(input("Windows(1) or Linux/Termux(2): "))
+if type < 2 or type > 1 : os.system("exit")
+checkupdates = input("Do you want to check updates?(y/n)")
+if checkupdates == 'y' : 
+ os.system("php upd.php")
+ if type == 1 : os.system("cls")
+ elif type == 2: os.system("clear")
+ print("Start again!(python start.py)")
+ os.system("exit")
+
 if type == 1 : os.system("cls")
 elif type == 2: os.system("clear")
 elif type != 1 and type != 2 : 
