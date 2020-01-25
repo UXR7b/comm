@@ -29,7 +29,7 @@ if type == 1 and os.path.isfile("C:/token.txt") :
 elif type == 2 and os.path.isfile('token'): 
   loadtoken = input("Load last token?(y/n): ")
   if loadtoken == 'y' : 
-    tokenfile1 = open("token.txt")
+    tokenfile1 = open("token")
     TOKEN = tokenfile1.read()
 else : loadtoken = 'n'
 if loadtoken == 'n' :
