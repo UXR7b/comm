@@ -1,4 +1,4 @@
-import vk, time, os
+import vk, time, os , os.path
 
 debug = False
 print("Whats your OS?")
@@ -12,11 +12,37 @@ debugi = int(input("Debug(1) or Not(Any number besides 1):"))
 if debugi == 1 : debug = True
 if type == 1 : os.system("cls")
 elif type == 2: os.system("clear")
-TOKENlink = input('Access token link:')
-TOKEN1 = TOKENlink.rsplit('access_token=')
-TOKEN2 = TOKEN1[1]
-TOKEN3 = TOKEN2.rsplit('&expires_in')
-TOKEN = TOKEN3[0]
+if type == 1 and os.path.isfile("C:/token.txt") : 
+  loadtoken = input("Load last token?(y/n): ")
+  if loadtoken == 'y' : 
+    tokenfile1 = open("C:/token.txt")
+    TOKEN = tokenfile1.read()
+elif type == 2 and os.path.isfile("/../sdcard/android/savetoken/token.txt"): 
+  loadtoken = input("Load last token?(y/n): ")
+  if loadtoken == 'y' : 
+    tokenfile1 = open("/../sdcard/android/savetoken/token.txt")
+    TOKEN = tokenfile1.read()
+    
+if loadtoken != 'y' :
+ TOKENlink = input('Access token link:')
+ TOKEN1 = TOKENlink.rsplit('access_token=')
+ TOKEN2 = TOKEN1[1]
+ TOKEN3 = TOKEN2.rsplit('&expires_in')
+ TOKEN = TOKEN3[0]
+ savetoken = input('Save token?(y/n): ')
+else :
+ print("Access token is:" + str(TOKEN))
+
+
+if type == 1 and savetoken == 'y' :
+ tokenfile = open('C:/token.txt', 'w')
+ tokenfile.write(TOKEN)
+ tokenfile.close()
+elif type == 2 and savetoken == 'y' :
+ tokenfile = open('/../sdcard/android/savetoken/token.txt', 'w')
+ tokenfile.write(TOKEN)
+ tokenfile.close()
+ 
 time.sleep(1)
 if type == 1 : os.system("cls")
 elif type == 2: os.system("clear")
@@ -43,6 +69,13 @@ if typem == 3 :
  print("Select number of comms in wave")
  print("Write number between 3 and 7:")
  typem = int(input())
+ if typem < 3 and typem > 7 : 
+  print("ERROR[Code:3]")
+  if type == 1 :
+   os.system("pause")
+   os.system("exit")
+  elif type == 2 :
+   os.system("exit")
  
  
 if type == 1 : os.system("cls")
