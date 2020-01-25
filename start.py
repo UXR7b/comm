@@ -100,14 +100,16 @@ elif linktype == 2 :
  linksplitany = link.rsplit('photo')[1]
  linksplit2 = linksplitany.rsplit('_')[0]
  linksplit3 = linksplitany.rsplit('_')[1]
+ linksplit4 = linksplit3.rsplit('%')[0]
  post_coment = linksplit2
- postID = linksplit3
+ postID = linksplit4
  if debug == True :
   print('list any is:' + linksplitany)
   print('list 1 is:' + linksplit2)
   print(' ')
   print('list 2 is:' + str(linksplit3))
   print(' ')
+  print('list 3 is:' + str(linksplit4))
  
 
  
@@ -137,9 +139,14 @@ time.sleep(2)
 counter = 0
 rangeclamp = typem + 1
 while counter != 999:
-    for n in range(1,rangeclamp) :
-     (api.wall.createComment(owner_id=post_coment,post_id=postID,message=mess))
-     counter += 1
+    if linktype == 1 : 
+     for n in range(1,rangeclamp) :
+      (api.wall.createComment(owner_id=post_coment,post_id=postID,message=mess))
+      counter += 1
+    elif linktype == 2 :
+     for n in range(1,rangeclamp) :
+       (api.photos.createComment(owner_id=post_coment,photo_id=postID,message=mess))
+       counter += 1
     
     if type == 1 : os.system("cls")
     elif type == 2: os.system("clear")
