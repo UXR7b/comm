@@ -100,12 +100,12 @@ elif multitoken1 != 1 and multitoken1 <= 20 :
  elif type == 2 and os.path.isfile('multitoken'): 
   if multitoken1 == len(re.findall(r"[\n']+", open('multitoken.txt').read())):
    loadmultitoken = input("Load last token?(y/n): ")
-   if loadtoken == 'y' : 
+   if loadmultitoken == 'y' : 
      multitokenfile1 = open("multitoken")
      for n in range(0,multitoken1):
       tokenl1 = multitokenfile1.readline()
       tokenl2 = tokenl1.rsplit("\n")
-      tokenlist[n] = tokenl2[0]()
+      tokenlist[n] = tokenl2[0]
  else : 
   loadmultitoken = 'n'
  if loadmultitoken == 'n':
