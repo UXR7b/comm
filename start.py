@@ -85,7 +85,7 @@ if multitoken1 == 1 :
   TOKEN_1 = TOKEN3[0]
   savetoken = input('Save token?(y/n): ')
  else :
-  print("Access token is:" + str(TOKEN))
+  print("Access token is:" + str(TOKEN_1))
 elif multitoken1 != 1 and multitoken1 <= 20 :
  en1 = True
  if type == 1 and os.path.isfile("C:/multitoken.txt") : 
@@ -192,7 +192,7 @@ elif linktype == 2 :
   print(' ')
   print('list 3 is:' + str(linksplit4))
 if multitoken == False:
- session = vk.Session(access_token=TOKEN)
+ session = vk.Session(access_token=TOKEN_1)
  api = vk.API(session ,v='5.92', lang='ru')
 
 if debug == True :
